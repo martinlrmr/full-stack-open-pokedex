@@ -70,7 +70,7 @@ jobs:
         run: echo "$COMMITS"
       - name: commit messages
         env:
-          COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
+          COMMIT_MESSAGES: ${{ toJson(github.event.commits.message) }}
         run: echo "$COMMIT_MESSAGES"
   notification:
     needs: [flyio_deployment]
@@ -82,9 +82,9 @@ jobs:
         with:
           severity: info
           text: A new version of Pokedex deployed
-          description: commit
-          details: url by user broke the build :(
-          footer: 'Severity: error'
+          
+          details: to https://fso-ml-pokedex.fly.dev/ by ${{ toJson(github.event.commits[0].committer.username) }}
+          footer: 'Severity: Informational'
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Test Failure
         uses: rjstone/discord-webhook-notify@v1
@@ -92,4 +92,7 @@ jobs:
         with:
           severity: error
           text: Build failed
+          description: commit
+          details: ${{ toJson(github.event.commits[0].url) }} by ${{ toJson(github.event.commits[0].committer.username) }} broke the build :(
+          footer: 'Severity: Error'
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
