@@ -1,6 +1,6 @@
 #!/bin/bash
 
-res=$(curl -s https://fso-ml-pokedex.fly.dev/health)
+res=$(curl -s http://localhost:3000//health)
 
 if [ "$res" == "ok" ]; then
   echo "Succeeded curl to /health"
