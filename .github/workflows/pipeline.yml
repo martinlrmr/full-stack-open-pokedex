@@ -32,7 +32,7 @@ jobs:
           start: npm run start-prod
           wait-on: http://localhost:5000
   flyio_deployment:
-    needs: [simple_deployment_pipeline]
+    needs: [pre_deployment_tasks]
     runs-on: ubuntu-20.04
     if: |
       github.event_name == 'push' &&
