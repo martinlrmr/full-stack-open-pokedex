@@ -1,6 +1,6 @@
 #!/bin/bash
 
-res=$(curl -s http://localhost:5000//health)
+echo $res
 
 if [ "$res" == "ok" ]; then
   echo "Succeeded curl to /health"
