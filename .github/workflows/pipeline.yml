@@ -74,6 +74,7 @@ jobs:
         run: echo "$COMMIT_MESSAGES"
   notification:
     needs: [flyio_deployment]
+    runs-on: ubuntu-20.04
     steps:
       - name: Test Success
         uses: rjstone/discord-webhook-notify@v1
