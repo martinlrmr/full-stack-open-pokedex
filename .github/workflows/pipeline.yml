@@ -82,7 +82,7 @@ jobs:
         with:
           severity: info
           text: A new version of Pokedex deployed
-          
+          description: ''
           details: to https://fso-ml-pokedex.fly.dev/ by ${{ toJson(github.event.commits[0].committer.username) }}
           footer: 'Severity: Informational'
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
