@@ -76,6 +76,6 @@ jobs:
           severity: error
           text: Build failed
           description: commit
-          details: [${{ github.event.head_commit.url }}](${{ github.event.head_commit.url }}) by ${{ github.event.head_commit.author.username }} broke the build :(
+          details: ${{ github.event.head_commit.url }} by ${{ github.event.head_commit.author.username }} broke the build :(
           footer: 'Severity: Error'
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
