@@ -82,7 +82,7 @@ jobs:
         with:
           severity: info
           text: A new version of Pokedex deployed
-          description: to https://fso-ml-pokedex.fly.dev/ by ${{ toJson(github.event.commits[0].committer.username) }}
+          description: to https://fso-ml-pokedex.fly.dev/ by ${{ github.event.head_commit.author.username }}
           footer: 'Severity: Informational'
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Test Failure
@@ -92,6 +92,6 @@ jobs:
           severity: error
           text: Build failed
           description: commit
-          details: ${{ toJson(github.event.commits[0].url) }} by ${{ toJson(github.event.commits[0].committer.username) }} broke the build :(
+          details: [${{ github.event.head_commit.url }}](${{ github.event.head_commit.url }}) by ${{ github.event.head_commit.author.username }} broke the build :(
           footer: 'Severity: Error'
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
