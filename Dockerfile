@@ -21,7 +21,7 @@ ENV NODE_ENV production
 COPY . .
 
 RUN npm install --production=false && npm run build
-RUN apt-get update; apt install -y curl
+RUN echo "alias curl='docker run -it --rm curlimages/curl'" >> ~/.bashrc
 FROM debian:bullseye
 
 LABEL fly_launch_runtime="nodejs"
