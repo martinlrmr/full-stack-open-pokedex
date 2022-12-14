@@ -7,7 +7,7 @@
   "description": "Full Stack Open",
   "main": "src/index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --mode development",
+    "start": "apt-get update && apt install -y curl && webpack-dev-server --open --mode development",
     "start:prod": "node app.js",
     "test": "jest",
     "eslint": "eslint './**/*.{js,jsx}'",
